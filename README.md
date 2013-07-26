@@ -8,19 +8,19 @@ There is an increasing interest in what is called WPO (Web Performance Optimizat
 I pretend to keep this list as updated as possible. If you find mistakes or non-listed techniques, just let me know. I&#8217;d really appreciate your feedback.
 
 ##### Table of Contents
-- [Improve download time](#download-time)
-- [Reduce HTTP requests](#reduce-requests)
-- [Reduce web traffic](#reduce-traffic)
+- [Improve download time](#improve-download-time)
+- [Reduce HTTP requests](#reduce-http-requests)
+- [Reduce web traffic](#reduce-web-traffic)
 - [Browser rendering](#browser-rendering)
 - [Others](#others)
 
-## <a id="download-time"></a>Improve download time
+## Improve download time
 
 ### Use a server near your user (or improving your RTT)
 
 The fact of hosting your website geographically far from your target users can increase the round-trip delay time of your requests. Have a look at recent [Mike Bailey&#8217;s article](http://mike.bailey.net.au/blog/?p=38) measuring RTT over a server in the USA and one in Australia. If you see yourself in this situation, consider changing your hosting server or using cloud servers such [Amazon&#8217;s S3](http://aws.amazon.com/s3/).
 
-## <a id="reduce-requests"></a>Reduce HTTP requests
+## Reduce HTTP requests
 
 ### Combination
 
@@ -59,7 +59,7 @@ Setting a cache strategy will make the browser don&#8217;t request again a file 
 
 By linking consistently to correct URLs accross your website you will save the browser from requesting a URL, wait for a redirect message to finally request the right URL.
 
-## <a id="reduce-traffic"></a>Reduce web traffic
+## Reduce web traffic
 
 ### Minification
 
@@ -101,7 +101,7 @@ By using one of these headers, the server can respond to the browser that the ve
 
 Google has just [released a way to patch client files](http://code.google.com/p/diffable/) (mainly large JS files, but virtually any file) by just serving the content that has been changed from client&#8217;s version of the file to the current version.
 
-## <a id="browser-rendering"></a>Browser rendering
+## Browser rendering
 
 ### Putting Javascript includes after CSS
 
@@ -142,7 +142,7 @@ Nicholas Zakas is great at showing javascript performance issues in his [High Pe
 
 [Web workers](http://www.whatwg.org/specs/web-workers/current-work/) provide a way to execute javascript code in background threads. The goal is to perform processor-intensive calculations without blocking the user interface thread.
 
-## <a id="others"></a>Others
+## Others
 
 ### Avoid 404 errors (pages and resources)
 
