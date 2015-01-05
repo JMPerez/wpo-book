@@ -142,6 +142,10 @@ Nicholas Zakas is great at showing javascript performance issues in his [High Pe
 
 [Web workers](http://www.whatwg.org/specs/web-workers/current-work/) provide a way to execute javascript code in background threads. The goal is to perform processor-intensive calculations without blocking the user interface thread.
 
+### Frame rate
+
+In order to provide a smooth experience, especially regarding scrolling (and parallax), you should take a look at [these issues and how to solve them](http://calendar.perfplanet.com/2013/the-runtime-performance-checklist/).
+
 ## Others
 
 ### Avoid 404 errors (pages and resources)
