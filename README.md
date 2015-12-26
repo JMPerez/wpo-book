@@ -87,6 +87,10 @@ In addition, new image formats such as [WebP](https://developers.google.com/spee
 
 This is a must. HTML, CSS and JS files should be gzipped. You can greatly reduce their size (at least the size of the file through the wire), and it&#8217;s very easy to be set up. Additional savings can be achieved using [Zopfli](https://code.google.com/p/zopfli/), achieving [savings of around 6%](http://www.stevesouders.com/blog/2013/03/08/zopflinator/) in comparison with default mod_deflate config.
 
+### Brotli
+
+[Brotli](http://calendar.perfplanet.com/2015/new-years-diet-brotli-compression/) is a different decoder that seems to perform better than GZip.
+
 ### Compression using PNG, Canvas and getImageData()
 
 Although it is a technique known since some time ago (see [this Nihilogic article of 2008](http://blog.nihilogic.dk/2008/05/compression-using-canvas-and-png.html)), during last days a series of tweets and posts have spread the word about this technique. In part, due to [a post by ajaxian](http://ajaxian.com/archives/want-to-pack-js-and-css-really-well-convert-it-to-a-png-and-unpack-it-via-canvas) and the [10k application competition](http://10k.aneventapart.com/).
