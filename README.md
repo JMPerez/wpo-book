@@ -1,18 +1,35 @@
 #Website Performance Optimization Techniques
 
-##Preface
+## Preface
 Every day performance is becoming more important. Users expect websites to behave the same way as desktop applications in terms of speed and general performance. That&#8217;s why we, as developers, should make an effort to provide the best experience to our visitors.
 
 There is an increasing interest in what is called WPO (Web Performance Optimization). This is a set of different techniques you can use to improve your website, depending on the area of optimization you want to target. If you are like me and enjoy improving sites performance you might find this list useful.
 
-I pretend to keep this list as updated as possible. If you find mistakes or non-listed techniques, just let me know. I&#8217;d really appreciate your feedback.
+I intend to keep this list as updated as possible. If you find mistakes or non-listed techniques, just let me know. I&#8217;d really appreciate your feedback.
 
 ##### Table of Contents
+- [What to optimize](#what-to-optimize)
 - [Improve download time](#improve-download-time)
 - [Reduce HTTP requests](#reduce-http-requests)
 - [Reduce web traffic](#reduce-web-traffic)
 - [Browser rendering](#browser-rendering)
 - [Others](#others)
+
+## What to optimize
+
+When talking about optimizing web sites we can be focusing on improving the load time for our site, or maybe decrease the amount of bytes needed to render it.
+
+Apart from monitoring the metric we want to improve, it is important that we also monitor metrics like amount of users / sessions, time on site, and user's performed actions. An improvement in load time or page size are meaningless if they don't improve (or even make worse) the other important ones.
+
+This article will divide the different techniques in sections depending on what each of them try to improve.
+
+### A note on page load time
+
+Page load time used to be a key metric to optimize. However, it doesn't reflect how the page is actually rendered.
+
+A page could be blank for 5 seconds due to a blocking script and then load the rest of content in 1 second, or it could render immediately and load some non-blocking third-party scripts that take several seconds. In both cases we could have a page load time of 6 seconds, though the user experience in the second one is way better.
+
+Metrics like [Speed Index](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) are better in the sense that they measure how fast the visible areas of a page are rendered, which matches more accurately how users perceive the page.
 
 ## Improve download time
 
@@ -44,20 +61,29 @@ If the browser supports canvas (and javascript is enabled) it is possible to sen
 
 It is nicely explained on [this video from Yahoo Developer Network](http://developer.yahoo.com/yui/theater/video.php?v=zakas-hpjs) where Ross Harmes (from minute 44) explains how Yahoo has planned to use it to the Flickr mobile version.
 
-There are some caching (and IE) issues, but it may be useful for mobile sites targetting well known modern browsers.
+There are some caching (and IE) issues, but it may be useful for mobile sites targeting well known modern browsers.
 
 ### Facebook&#8217;s BigPipe
 
 [BigPipe](http://www.facebook.com/notes/facebook-engineering/bigpipe-pipelining-web-pages-for-high-performance/389414033919) consists of early flushing main content, while deferring a set of pagelets that are composed by asynchronous threads and injected into their corresponding containers using Javascript.
- This allows users to see the main content as early as possible, while generating in parallel the content of different side areas, that are served by flushing in the very moment they are ready. This way, if an area needs more time to get completed, it will not affect the whole page.
+
+This allows users to see the main content as early as possible, while generating in parallel the content of different side areas, that are served by flushing in the very moment they are ready. This way, if an area needs more time to get completed, it will not affect the whole page.
+
+Although the technique was introduced in 2010, some sites are embracing it these days. An example is the [Drupal](http://wimleers.com/blog/drupal-8-bigpipe-module-ready), CMS, which has included it in its 8.0.0 version.
 
 ### Caching
 
-Setting a cache strategy will make the browser don&#8217;t request again a file that has already downloaded. This is useful for static content that is not frequently changed or if we have implemented a system to serve newer versions of the file seemlessly (by last-modified or e-tag header, or by appending a version number to the query string). Or maybe it is just not a problem to have a client using a non-updated version of the file (in example, a body background).
+Setting a cache strategy will make the browser don&#8217;t request again a file that has already downloaded. This is useful for static content that is not frequently changed or if we have implemented a system to serve newer versions of the file seamlessly (by last-modified or e-tag header, or by appending a version number to the query string). Or maybe it is just not a problem to have a client using a non-updated version of the file (in example, a body background).
 
 ### Avoid 301 redirects
 
-By linking consistently to correct URLs accross your website you will save the browser from requesting a URL, wait for a redirect message to finally request the right URL.
+By linking consistently to correct URLs across your website you will save the browser from requesting a URL, wait for a redirect message to finally request the right URL.
+
+### Service workers
+
+Service workers allow us to intercept browser requests. This allows offline capabilities and selective caching of resources. In practice, this means that, although we don't strictly reduce the amount of HTTP requests, we can return a response quicker than if it had to hit a server.
+
+I recommend you to check the [Service Worker Recipes](https://github.com/GoogleChrome/samples/tree/gh-pages/service-worker) and [Demos](https://github.com/w3c-webmob/ServiceWorkersDemos#basic-demos) to learn more about them.
 
 ## Reduce web traffic
 
@@ -75,7 +101,7 @@ If you just have to use cookies, try to isolate your static resources from cooki
 
 ### Split consistently static resources across different subdomains/domains
 
-If you use different domains or subdomains to provide your static files, make sure that a client request a specific file always to the same domain, to take advantage of caching. This is important if files are simulated to be splited into different subdomains rather than really being hosted in different subdomains.
+If you use different domains or subdomains to provide your static files, make sure that a client request a specific file always to the same domain, to take advantage of caching. This is important if files are simulated to be split into different subdomains rather than really being hosted in different subdomains.
 
 ### Images optimization
 
@@ -99,7 +125,7 @@ If the browser supports canvas (and javascript is enabled) it is possible to com
 
 ### Last-modified and E-Tag
 
-By using one of these headers, the server can respond to the browser that the version of the requested file is updated and does not need to download a new one. This is useful as a method to make sure every client uses the most updated version of your files. Just remember that a roundtrip is always neccesary to perform the check, so it might be not the best approach. You could consider adding a version string as a parameter in your URL requests.
+By using one of these headers, the server can respond to the browser that the version of the requested file is updated and does not need to download a new one. This is useful as a method to make sure every client uses the most updated version of your files. Just remember that a roundtrip is always necessary to perform the check, so it might be not the best approach. You could consider adding a version string as a parameter in your URL requests.
 
 ### Diffable
 
