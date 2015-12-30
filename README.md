@@ -49,7 +49,7 @@ As simple as merging several image files into a single one and use them from you
 
 ### CSS Data URIs
 
-Instead of image sprites you can take a look at [Data URIs](http://www.nczonline.net/blog/2010/07/06/data-uris-make-css-sprites-obsolete/). It can make you get rid off of big, non-mantainable images files. Just take into account that IE6 and IE7 don&#8217;t support this feature, and you should follow the [MHTML workaround](http://www.phpied.com/mhtml-when-you-need-data-uris-in-ie7-and-under/). Note that, [according to researches](http://www.mobify.com/blog/data-uris-are-slow-on-mobile/), decoding Data URIs on mobile devices may be much slower than loading these resources from cache. You need to consider whether saving a request worths it compared to the introduced overhead.
+Instead of image sprites you can take a look at [Data URIs](http://www.nczonline.net/blog/2010/07/06/data-uris-make-css-sprites-obsolete/). It can make you get rid off of big, non-maintainable images files. Just take into account that IE6 and IE7 don&#8217;t support this feature, and you should follow the [MHTML workaround](http://www.phpied.com/mhtml-when-you-need-data-uris-in-ie7-and-under/). Note that, [according to researches](http://www.mobify.com/blog/data-uris-are-slow-on-mobile/), decoding Data URIs on mobile devices may be much slower than loading these resources from cache. You need to consider whether saving a request is worth it compared to the introduced overhead.
 
 ### Use CSS3 instead of images
 
