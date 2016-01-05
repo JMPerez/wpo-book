@@ -1,3 +1,9 @@
+-------
+
+**Note**: I am moving the contents of this repo to [this book](https://www.gitbook.com/book/jmperez/wpo/).
+
+-------
+
 #Website Performance Optimization Techniques
 
 ## Preface
