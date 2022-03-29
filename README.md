@@ -1,10 +1,4 @@
--------
-
-**Note**: I am moving the contents of this repo to [this book](https://www.gitbook.com/book/jmperez/wpo/).
-
--------
-
-#Website Performance Optimization Techniques
+# Website Performance Optimization Techniques
 
 ## Preface
 Every day performance is becoming more important. Users expect websites to behave the same way as desktop applications in terms of speed and general performance. That&#8217;s why we, as developers, should make an effort to provide the best experience to our visitors.
